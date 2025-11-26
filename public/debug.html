@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage Debug</title>
+    <style>
+        body {
+            font-family: monospace;
+            background: #000;
+            color: #0f0;
+            padding: 20px;
+        }
+        pre {
+            background: #111;
+            padding: 20px;
+            border: 1px solid #0f0;
+            overflow-x: auto;
+        }
+        button {
+            background: #0f0;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>LocalStorage Debug</h1>
+    
+    <button onclick="showTickets()">Show Tickets</button>
+    <button onclick="showComments()">Show Comments</button>
+    <button onclick="clearAll()">Clear All Data</button>
+    
+    <h2>Tickets:</h2>
+    <pre id="tickets"></pre>
+    
+    <h2>Comments:</h2>
+    <pre id="comments"></pre>
+    
+    <script>
+        function showTickets() {
+            const tickets = localStorage.getItem('brototype_tickets');
+            document.getElementById('tickets').textContent = tickets ? JSON.stringify(JSON.parse(tickets), null, 2) : 'No tickets found';
+        }
+        
+        function showComments() {
+            const comments = localStorage.getItem('brototype_comments');
+            document.getElementById('comments').textContent = comments ? JSON.stringify(JSON.parse(comments), null, 2) : 'No comments found';
+        }
+        
+        function clearAll() {
+            if (confirm('Are you sure you want to clear all localStorage data?')) {
+                localStorage.removeItem('brototype_tickets');
+                localStorage.removeItem('brototype_comments');
+                alert('Cleared!');
+                showTickets();
+                showComments();
+            }
+        }
+        
+        // Auto-load on page load
+        showTickets();
+        showComments();
+    </script>
+</body>
+</html>
