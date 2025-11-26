@@ -21,7 +21,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { getAllTickets, getTicketStats, updateTicketStatus, getProfileById, getCommentsByTicketId, addComment } from '@/lib/mock-data';
-import { Ticket, TicketStatus, TicketPriority, TicketCategory, TicketComment } from '@/lib/types';
+import { Ticket, TicketStatus, TicketPriority, TicketCategory, TicketComment, Profile } from '@/lib/types';
 import { useRouter } from 'next/navigation';
 import { AlertCircle, CheckCircle, Clock, Loader2, Search, ArrowUpDown, Download, User, Phone, Hash, Calendar, BookOpen, Send } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
