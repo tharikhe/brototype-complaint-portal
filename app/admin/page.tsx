@@ -35,6 +35,7 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 import PacManLoader from '@/components/pac-man-loader';
+import { MobileNav } from '@/components/mobile-nav';
 import AnalyticsCharts from '@/components/analytics-charts';
 import { supabase } from '@/lib/supabase/client';
 
@@ -291,11 +292,17 @@ export default function AdminDashboard() {
     }
 
     return (
-        <div className="min-h-screen p-4 md:p-8 bg-black text-white">
+        <div className="min-h-screen p-4 md:p-8 bg-black text-white overflow-x-hidden">
             {/* Header with Export and Logout */}
             <div className="flex justify-between items-center mb-4">
-                <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-                <div className="flex gap-2">
+                <div className="md:hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/brototype-logo.png" alt="Brototype" className="h-8 w-auto" />
+                </div>
+                <h1 className="hidden md:block text-2xl font-bold">Admin Dashboard</h1>
+
+                {/* Desktop Nav */}
+                <div className="hidden md:flex gap-2">
                     <Button
                         variant="gradient"
                         onClick={() => window.open('mailto:support@brototype.com')}
@@ -308,6 +315,11 @@ export default function AdminDashboard() {
                     </Button>
                     <LogoutButton />
                 </div>
+
+                {/* Mobile Nav */}
+                <MobileNav
+                    onSupportClick={() => window.open('mailto:support@brototype.com')}
+                />
             </div>
 
             <div className="max-w-7xl mx-auto">
@@ -494,16 +506,16 @@ export default function AdminDashboard() {
                             </TableBody>
                         </Table>
                     </div>
-                </Card >
-            </div >
+                </Card>
+            </div>
 
             {/* Ticket Details Modal */}
             <Dialog open={!!selectedTicket} onOpenChange={(open) => !open && setSelectedTicket(null)}>
                 <DialogContent className="bg-zinc-900 border-zinc-800 text-white sm:max-w-[600px] max-h-[85vh] overflow-y-auto">
                     <DialogHeader>
-                        <DialogTitle className="text-xl font-bold flex items-center gap-2">
+                        <DialogTitle className="text-xl font-bold flex items-center gap-2 break-words text-left">
                             {selectedTicket?.title}
-                            <Badge variant="outline" className="ml-2 border-zinc-600 text-zinc-400 font-normal">
+                            <Badge variant="outline" className="ml-2 border-zinc-600 text-zinc-400 font-normal shrink-0">
                                 {selectedTicket?.category}
                             </Badge>
                         </DialogTitle>
@@ -515,7 +527,7 @@ export default function AdminDashboard() {
                     <div className="grid gap-6 py-4">
                         <div className="space-y-2">
                             <h4 className="text-sm font-medium text-zinc-300">Description</h4>
-                            <div className="p-4 bg-black rounded-lg border border-zinc-800 text-zinc-300 text-sm leading-relaxed">
+                            <div className="p-4 bg-black rounded-lg border border-zinc-800 text-zinc-300 text-sm leading-relaxed break-words">
                                 {selectedTicket?.description}
                             </div>
                         </div>
@@ -651,7 +663,7 @@ export default function AdminDashboard() {
                         </div>
                     </div>
                 </DialogContent>
-            </Dialog >
-        </div >
+            </Dialog>
+        </div>
     );
 }

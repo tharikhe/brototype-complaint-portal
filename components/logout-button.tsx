@@ -2,13 +2,22 @@
 
 import { useAuth } from '@/lib/auth-context';
 
-export function LogoutButton() {
+import { cn } from "@/lib/utils"
+
+interface LogoutButtonProps {
+    className?: string
+}
+
+export function LogoutButton({ className }: LogoutButtonProps) {
     const { signOut } = useAuth();
 
     return (
         <button
             onClick={signOut}
-            className="group relative flex items-center gap-1 px-6 py-2 border-2 border-transparent font-medium text-sm bg-transparent rounded-full cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] shadow-[0_0_0_2px_white] text-white hover:shadow-[0_0_0_12px_transparent] hover:text-black hover:rounded-xl active:scale-95 active:shadow-[0_0_0_4px_white]"
+            className={cn(
+                "group relative flex items-center gap-1 px-6 py-2 border-2 border-transparent font-medium text-sm bg-transparent rounded-full cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] shadow-[0_0_0_2px_white] text-white hover:shadow-[0_0_0_12px_transparent] hover:text-black hover:rounded-xl active:scale-95 active:shadow-[0_0_0_4px_white]",
+                className
+            )}
         >
             {/* Arrow 1 - Slides in from left */}
             <svg

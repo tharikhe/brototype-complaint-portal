@@ -33,6 +33,7 @@ import { useAuth } from '@/lib/auth-context';
 import { LogoutButton } from '@/components/logout-button';
 import { useToast } from '@/hooks/use-toast';
 import PacManLoader from '@/components/pac-man-loader';
+import { MobileNav } from '@/components/mobile-nav';
 
 export default function StudentDashboard() {
     const router = useRouter();
@@ -251,26 +252,39 @@ export default function StudentDashboard() {
     }
 
     return (
-        <div className="min-h-screen p-4 md:p-8 bg-black text-white">
+        <div className="min-h-screen p-4 md:p-8 bg-black text-white overflow-x-hidden">
             {/* Header with Logout */}
-            <div className="flex justify-end mb-4 gap-2">
-                <Button
-                    variant="gradient"
-                    onClick={() => setProfileDialogOpen(true)}
-                >
-                    <User className="mr-2 h-4 w-4" />
-                    Profile Settings
-                </Button>
-                <Button
-                    variant="gradient"
-                    onClick={() => window.open('mailto:support@brototype.com')}
-                >
-                    Contact Support
-                </Button>
-                <LogoutButton />
+            <div className="flex justify-between md:justify-end items-center mb-4 gap-2">
+                <div className="md:hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/brototype-logo.png" alt="Brototype" className="h-8 w-auto" />
+                </div>
+
+                {/* Desktop Nav */}
+                <div className="hidden md:flex gap-2">
+                    <Button
+                        variant="gradient"
+                        onClick={() => setProfileDialogOpen(true)}
+                    >
+                        <User className="mr-2 h-4 w-4" />
+                        Profile Settings
+                    </Button>
+                    <Button
+                        variant="gradient"
+                        onClick={() => window.open('mailto:support@brototype.com')}
+                    >
+                        Contact Support
+                    </Button>
+                    <LogoutButton />
+                </div>
+
+                {/* Mobile Nav */}
+                <MobileNav
+                    onProfileClick={() => setProfileDialogOpen(true)}
+                />
             </div>
 
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto w-full">
                 {/* Header Card */}
                 <Card className="bg-zinc-900 border-zinc-800 mb-8 shadow-2xl">
                     <CardHeader>
@@ -653,10 +667,10 @@ export default function StudentDashboard() {
                                     onClick={() => setSelectedTicket(ticket)}
                                 >
                                     <CardContent className="p-6">
-                                        <div className="flex justify-between items-start mb-4">
-                                            <div>
-                                                <h3 className="text-xl font-semibold text-white mb-2">{ticket.title}</h3>
-                                                <div className="flex gap-2 mb-3">
+                                        <div className="flex justify-between items-start mb-4 gap-2">
+                                            <div className="min-w-0 flex-1">
+                                                <h3 className="text-xl font-semibold text-white mb-2 break-words">{ticket.title}</h3>
+                                                <div className="flex gap-2 mb-3 flex-wrap">
                                                     {getStatusBadge(ticket.status)}
                                                     {getPriorityBadge(ticket.priority)}
                                                     <Badge variant="outline" className="border-zinc-700 text-zinc-400">
@@ -664,11 +678,11 @@ export default function StudentDashboard() {
                                                     </Badge>
                                                 </div>
                                             </div>
-                                            <span className="text-sm text-zinc-500">
+                                            <span className="text-sm text-zinc-500 shrink-0">
                                                 {new Date(ticket.created_at).toLocaleDateString()}
                                             </span>
                                         </div>
-                                        <p className="text-zinc-400 line-clamp-2">{ticket.description}</p>
+                                        <p className="text-zinc-400 line-clamp-2 break-words">{ticket.description}</p>
                                     </CardContent>
                                 </Card>
                             ))
