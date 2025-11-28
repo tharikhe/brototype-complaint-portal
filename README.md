@@ -2,6 +2,8 @@
 
 A modern, feature-rich student complaint management system with a festive Christmas theme, built using Next.js 14, Supabase, and shadcn/ui.
 
+🚀 **Live Demo:** [https://brototype-complaint-portal-js9d.vercel.app/](https://brototype-complaint-portal-js9d.vercel.app/)
+
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
