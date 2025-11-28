@@ -37,9 +37,9 @@ export function MobileNav({ onProfileClick, onSupportClick }: MobileNavProps) {
                     <Mail className="mr-2 h-4 w-4" />
                     <span>Contact Support</span>
                 </DropdownMenuItem>
-                <div className="p-2 border-t border-zinc-800 mt-2">
-                    <LogoutButton className="w-full justify-start px-2" />
-                </div>
+                <DropdownMenuItem asChild className="cursor-pointer hover:bg-zinc-800 focus:bg-zinc-800 mt-2 border-t border-zinc-800 pt-2">
+                    <LogoutButton />
+                </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     )

@@ -297,7 +297,7 @@ export default function AdminDashboard() {
             <div className="flex justify-between items-center mb-4">
                 <div className="md:hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/brototype-logo.png" alt="Brototype" className="h-8 w-auto" />
+                    <img src="/brototype-logo.png" alt="Brototype" className="h-12 w-auto" />
                 </div>
                 <h1 className="hidden md:block text-2xl font-bold">Admin Dashboard</h1>
 
