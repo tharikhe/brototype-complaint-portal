@@ -296,8 +296,7 @@ export default function AdminDashboard() {
             {/* Header with Export and Logout */}
             <div className="flex justify-between items-center mb-4">
                 <div className="md:hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/brototype-logo.png" alt="Brototype" className="h-12 w-auto" />
+                    <h1 className="text-xl font-bold tracking-wider uppercase font-sans">brototype</h1>
                 </div>
                 <h1 className="hidden md:block text-2xl font-bold">Admin Dashboard</h1>
 

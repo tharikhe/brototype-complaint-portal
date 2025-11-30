@@ -256,8 +256,7 @@ export default function StudentDashboard() {
             {/* Header with Logout */}
             <div className="flex justify-between md:justify-end items-center mb-4 gap-2">
                 <div className="md:hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/brototype-logo.png" alt="Brototype" className="h-12 w-auto" />
+                    <h1 className="text-xl font-bold tracking-wider uppercase font-sans">brototype</h1>
                 </div>
 
                 {/* Desktop Nav */}

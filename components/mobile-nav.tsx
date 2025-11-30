@@ -1,5 +1,3 @@
-"use client"
-
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -8,7 +6,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { Menu, User, Mail, LogOut } from "lucide-react"
-import { LogoutButton } from "@/components/logout-button"
+import { useAuth } from "@/lib/auth-context"
 
 interface MobileNavProps {
     onProfileClick?: () => void
@@ -16,6 +14,8 @@ interface MobileNavProps {
 }
 
 export function MobileNav({ onProfileClick, onSupportClick }: MobileNavProps) {
+    const { signOut } = useAuth();
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -37,8 +37,12 @@ export function MobileNav({ onProfileClick, onSupportClick }: MobileNavProps) {
                     <Mail className="mr-2 h-4 w-4" />
                     <span>Contact Support</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="cursor-pointer hover:bg-zinc-800 focus:bg-zinc-800 mt-2 border-t border-zinc-800 pt-2">
-                    <LogoutButton />
+                <DropdownMenuItem
+                    onClick={signOut}
+                    className="cursor-pointer hover:bg-zinc-800 focus:bg-zinc-800 mt-2 border-t border-zinc-800 pt-2 text-red-400 focus:text-red-400"
+                >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log Out</span>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
